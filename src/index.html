@@ -39,19 +39,55 @@
   <header class="site-header">
     <div class="container header-row">
       <div>
-        <h1 class="logo">shima<span class="logo-dot">.shop</span></h1>
+        <h1 class="logo"><a href="#kits" class="logo-link">shima<span class="logo-dot">.shop</span></a></h1>
         <p class="tagline">Cognitive Enhancement Cookies</p>
       </div>
-      <button class="btn-theme" id="btnTheme" aria-label="Switch colour theme, currently Auto">
-        <span class="btn-theme-icon" id="themeIcon" aria-hidden="true">◐</span>
-        <span id="themeLabel">Auto</span>
-      </button>
+      <div class="header-actions">
+        <a href="#cart" class="btn-cart" id="btnCart" aria-label="View cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3h3l2 14h12l2-10H6"/><circle cx="8" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+          <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+        </a>
+        <button class="btn-theme" id="btnTheme" aria-label="Switch colour theme, currently Auto">
+          <span class="btn-theme-icon" id="themeIcon" aria-hidden="true">◐</span>
+          <span id="themeLabel">Auto</span>
+        </button>
+      </div>
     </div>
   </header>
 
+  <section class="search-panel" id="search-panel" aria-label="Search and filter">
+    <div class="container search-panel-inner">
+      <div class="search-wrap">
+        <input type="search" id="searchInput" class="search-input" placeholder="Search products…" aria-label="Search products" autocomplete="off">
+        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results" hidden></div>
+      </div>
+      <div class="filter-wrap">
+        <select id="filterCategory" class="filter-select" aria-label="Filter by category">
+          <option value="">All categories</option>
+        </select>
+        <div class="filter-tags-wrap">
+          <button type="button" class="filter-tags-trigger" id="filterTagsTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter by tags">
+            Tags <span class="filter-tags-count" id="filterTagsCount"></span>
+          </button>
+          <div class="filter-tags-dropdown" id="filterTagsDropdown" role="listbox" hidden>
+            <div class="filter-tags-list" id="filterTagsList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main id="main-content" class="store">
-    <div class="container">
-      <div class="kits-grid" id="kits-grid" role="list" aria-label="Product kits"></div>
+    <div class="container store-content">
+      <div class="store-view store-view-kits" id="view-kits" role="region" aria-label="Kits">
+        <div class="kits-grid" id="kits-grid" role="list" aria-label="Product kits"></div>
+      </div>
+      <div class="store-view store-view-product" id="view-product" hidden role="region" aria-label="Product details">
+        <div id="product-detail"></div>
+      </div>
+      <div class="store-view store-view-cart" id="view-cart" hidden role="region" aria-label="Shopping cart">
+        <div id="cart-content"></div>
+      </div>
     </div>
   </main>
 
