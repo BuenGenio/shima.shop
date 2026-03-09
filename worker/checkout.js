@@ -31,7 +31,7 @@ const PRODUCTS = {
   },
 };
 
-const SITE_URL = 'https://buengenio.github.io/adhd-stack-shop';
+const SITE_URL = 'https://shima-shop.dpd-anthill.workers.dev';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
