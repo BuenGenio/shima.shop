@@ -12,20 +12,24 @@ export const SECTIONS = {
   products: {
     label: 'Product',
     storeKey: 'products',
+    customModal: true,
     columns: [
       { key: 'name',      label: 'Name' },
-      { key: 'flavor',    label: 'Flavor' },
+      { key: 'slug',      label: 'Slug', mono: true },
       { key: 'pack_size', label: 'Pack Size' },
+      { key: 'variant',   label: 'Variant' },
       { key: 'price',     label: 'Price',    mono: true },
       { key: 'currency',  label: 'Currency' },
     ],
     fields: [
       { key: 'name',      label: 'Name',      type: 'text',     required: true },
-      { key: 'flavor',    label: 'Flavor',     type: 'text' },
+      { key: 'slug',      label: 'Slug',       type: 'text' },
       { key: 'pack_size', label: 'Pack Size',  type: 'text' },
+      { key: 'variant',   label: 'Variant',    type: 'text' },
       { key: 'price',     label: 'Price',      type: 'number',   required: true },
       { key: 'currency',  label: 'Currency',   type: 'text',     required: true },
-      { key: 'comment',   label: 'Comment',    type: 'textarea', full: true },
+      { key: 'comment',   label: 'Comment',   type: 'textarea', full: true },
+      { key: 'images',    label: 'Images',     type: 'images',   full: true },
     ],
   },
   categories: {
@@ -48,6 +52,7 @@ export const SECTIONS = {
     columns: [
       { key: 'name',         label: 'Name' },
       { key: 'tagline',      label: 'Tagline' },
+      { key: 'product_ids',  label: 'Products', render: 'productCount' },
       { key: 'bundle_price', label: 'Bundle Price', mono: true },
       { key: 'currency',     label: 'Currency' },
       { key: 'color',        label: 'Color', color: true },
@@ -58,6 +63,7 @@ export const SECTIONS = {
       { key: 'bundle_price', label: 'Bundle Price',  type: 'number' },
       { key: 'currency',     label: 'Currency',      type: 'text' },
       { key: 'color',        label: 'Accent Color',  type: 'color' },
+      { key: 'product_ids',  label: 'Products',      type: 'product_picker', full: true },
     ],
   },
   subscriptions: {
@@ -132,6 +138,24 @@ export const SECTIONS = {
       { key: 'code',   label: 'Code',   type: 'text', required: true },
       { key: 'symbol', label: 'Symbol', type: 'text', required: true },
       { key: 'name',   label: 'Name',   type: 'text', required: true },
+    ],
+  },
+  tags: {
+    label: 'Tag',
+    storeKey: 'tags',
+    columns: [
+      { key: '_tree_name', label: 'Name', render: 'treeName' },
+      { key: 'slug',       label: 'Slug', mono: true },
+      { key: 'scope',      label: 'Scope' },
+      { key: 'color',      label: 'Color', color: true },
+    ],
+    fields: [
+      { key: 'name',        label: 'Name',        type: 'text',     required: true },
+      { key: 'slug',        label: 'Slug',         type: 'text',     required: true },
+      { key: 'scope',       label: 'Scope',        type: 'select',   required: true, options: ['category','attribute','status','settings','shipping','payment','custom'] },
+      { key: 'parent_id',   label: 'Parent Tag',   type: 'dynamic_select', dynamic: 'tags' },
+      { key: 'color',       label: 'Color',        type: 'color' },
+      { key: 'description', label: 'Description',  type: 'textarea', full: true },
     ],
   },
 }

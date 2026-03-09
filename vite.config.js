@@ -4,6 +4,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   root: 'src',
   publicDir: '../static',
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
+  },
   build: {
     outDir: '../public',
     emptyOutDir: true,

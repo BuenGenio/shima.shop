@@ -5,3 +5,4 @@ node_modules/
 stripe-price-ids.json
 scripts/
 public/
+*.db

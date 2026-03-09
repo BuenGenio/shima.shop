@@ -1,3 +1,16 @@
-name = "adhd-stack-shop"
+name = "shima-shop"
 compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "public"
+
+[vars]
+TURSO_DATABASE_URL = ""
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "shima-shop"
+
+# Secrets (set via `wrangler secret put`):
+# TURSO_AUTH_TOKEN
+# STRIPE_SECRET_KEY
+# Payment providers: configure via Admin > Payment Methods, or add env vars

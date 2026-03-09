@@ -2,22 +2,31 @@
   "name": "shima.shop",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "node scripts/dev-api.js",
     "build": "vite build",
     "preview": "vite preview",
     "dev:full": "vite build && wrangler pages dev public",
-    "deploy": "vite build && wrangler pages deploy public"
+    "deploy": "vite build && wrangler pages deploy public",
+    "db:migrate": "node db/migrate.js",
+    "db:seed-payments": "node db/seed-payments.js",
+    "db:dev": "docker compose up -d"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@libsql/client": "^0.17.0",
     "stripe": "^20.4.0",
     "wrangler": "^4.70.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19",
     "vite": "^7.3.1"
   }
 }

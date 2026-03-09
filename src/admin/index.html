@@ -26,118 +26,497 @@
     </div>
   </header>
 
-  <nav class="admin-tabs" aria-label="Admin sections">
-    <div class="container">
-      <div class="tabs-track" role="tablist" aria-label="Admin sections">
-        <button class="tab-pill active" role="tab" aria-selected="true" data-tab="products" id="tab-products" aria-controls="panel-products">Products</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="categories" id="tab-categories" aria-controls="panel-categories">Categories</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="kits" id="tab-kits" aria-controls="panel-kits">Kits</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="subscriptions" id="tab-subscriptions" aria-controls="panel-subscriptions">Subscriptions</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="shipping" id="tab-shipping" aria-controls="panel-shipping">Shipping Methods</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="mail" id="tab-mail" aria-controls="panel-mail">Mail Server</button>
-        <button class="tab-pill" role="tab" aria-selected="false" data-tab="currencies" id="tab-currencies" aria-controls="panel-currencies">Currencies</button>
+  <div class="admin-layout" id="admin-layout" data-menu-position="sidebar_left">
+    <main id="main-content" class="admin-main">
+      <div class="container">
+        <aside class="admin-sidebar  mb-4" id="admin-sidebar" aria-label="Admin navigation">
+          <button type="button" class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar" aria-expanded="true">‹</button>
+          <nav class="admin-nav">
+            <div class="nav-group nav-group-item">
+              <button type="button" class="nav-group-title" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">Inventory</button>
+              <ul class="nav-list" role="menu">
+                <li><a href="#products" class="nav-item" data-tab="products" id="tab-products" title="Products"><span class="nav-item-text">Products</span></a></li>
+                <li><a href="#categories" class="nav-item" data-tab="categories" id="tab-categories" title="Categories"><span class="nav-item-text">Categories</span></a></li>
+                <li><a href="#kits" class="nav-item" data-tab="kits" id="tab-kits" title="Kits (Bundles)"><span class="nav-item-text">Kits (Bundles)</span></a></li>
+                <li><a href="#subscriptions" class="nav-item" data-tab="subscriptions" id="tab-subscriptions" title="Subscriptions"><span class="nav-item-text">Subscriptions</span></a></li>
+                <li><a href="#tags" class="nav-item" data-tab="tags" id="tab-tags" title="Tags"><span class="nav-item-text">Tags</span></a></li>
+              </ul>
+            </div>
+            <div class="nav-group nav-group-item">
+              <button type="button" class="nav-group-title" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">Analytics</button>
+              <ul class="nav-list" role="menu">
+                <li><a href="#stats" class="nav-item" data-tab="stats" id="tab-stats" title="Stats"><span class="nav-item-text">Stats</span></a></li>
+                <li><a href="#reports" class="nav-item" data-tab="reports" id="tab-reports" title="Reports"><span class="nav-item-text">Reports</span></a></li>
+              </ul>
+            </div>
+            <div class="nav-group nav-group-item">
+              <button type="button" class="nav-group-title" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">Settings</button>
+              <ul class="nav-list" role="menu">
+                <li><a href="#settings" class="nav-item" data-tab="settings" id="tab-settings" title="Settings"><span class="nav-item-text">Settings</span></a></li>
+              </ul>
+            </div>
+          </nav>
+        </aside>
+        <!-- Inventory panels -->
+        <section class="tab-panel active" id="panel-products" role="tabpanel" aria-labelledby="tab-products">
+          <div class="panel-header">
+            <h2>Products</h2>
+            <button class="btn-add" data-section="products">+ Add Product</button>
+          </div>
+          <div class="panel-body" id="list-products"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-categories" role="tabpanel" aria-labelledby="tab-categories" hidden>
+          <div class="panel-header">
+            <h2>Categories</h2>
+            <button class="btn-add" data-section="categories">+ Add Category</button>
+          </div>
+          <div class="panel-body" id="list-categories"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-kits" role="tabpanel" aria-labelledby="tab-kits" hidden>
+          <div class="panel-header">
+            <h2>Kits (Bundles)</h2>
+            <button class="btn-add" data-section="kits">+ Add Kit</button>
+          </div>
+          <div class="panel-body" id="list-kits"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-subscriptions" role="tabpanel" aria-labelledby="tab-subscriptions" hidden>
+          <div class="panel-header">
+            <h2>Subscriptions</h2>
+            <button class="btn-add" data-section="subscriptions">+ Add Subscription</button>
+          </div>
+          <div class="panel-body" id="list-subscriptions"></div>
+        </section>
+
+        <section class="tab-panel" id="panel-tags" role="tabpanel" aria-labelledby="tab-tags" hidden>
+          <div class="panel-header">
+            <h2>Tags</h2>
+            <div class="panel-header-actions">
+              <scope-filter></scope-filter>
+              <button class="btn-add" data-section="tags">+ Add Tag</button>
+            </div>
+          </div>
+          <div class="panel-body" id="list-tags"></div>
+        </section>
+
+        <!-- Analytics panels -->
+        <section class="tab-panel" id="panel-stats" role="tabpanel" aria-labelledby="tab-stats" hidden>
+          <div class="panel-header">
+            <h2>Stats</h2>
+          </div>
+          <div class="panel-body">
+            <div class="settings-cards-wrap">
+              <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+              <div class="settings-cards cols-1">
+              <div class="settings-card stats-card" id="stats-page-views" data-dashboard="page-views">
+                <h4>Page Views</h4>
+                <div class="stats-filters">
+                  <input type="text" class="stats-filter-q" placeholder="Search path, referrer…" aria-label="Fulltext search">
+                  <input type="date" class="stats-filter-from" aria-label="From date">
+                  <input type="date" class="stats-filter-to" aria-label="To date">
+                  <button type="button" class="stats-btn-refresh" aria-label="Refresh">Refresh</button>
+                </div>
+                <p class="stats-loading" hidden>Loading…</p>
+                <div class="stats-chart-wrap"></div>
+                <div class="stats-breakdown-wrap"></div>
+                <div class="stats-export">
+                  <button type="button" class="stats-btn-export-csv">Export CSV</button>
+                  <button type="button" class="stats-btn-export-json">Export JSON</button>
+                </div>
+              </div>
+              <div class="settings-card stats-card" id="stats-origins" data-dashboard="origins">
+                <h4>Origins & Traffic</h4>
+                <div class="stats-filters">
+                  <input type="text" class="stats-filter-q" placeholder="Search referrer…" aria-label="Fulltext search">
+                  <input type="date" class="stats-filter-from" aria-label="From date">
+                  <input type="date" class="stats-filter-to" aria-label="To date">
+                  <button type="button" class="stats-btn-refresh" aria-label="Refresh">Refresh</button>
+                </div>
+                <p class="stats-loading" hidden>Loading…</p>
+                <div class="stats-chart-wrap"></div>
+                <div class="stats-breakdown-wrap"></div>
+                <div class="stats-export">
+                  <button type="button" class="stats-btn-export-csv">Export CSV</button>
+                  <button type="button" class="stats-btn-export-json">Export JSON</button>
+                </div>
+              </div>
+              <div class="settings-card stats-card" id="stats-technology" data-dashboard="technology">
+                <h4>Technology</h4>
+                <div class="stats-filters">
+                  <input type="text" class="stats-filter-q" placeholder="Search…" aria-label="Fulltext search">
+                  <input type="date" class="stats-filter-from" aria-label="From date">
+                  <input type="date" class="stats-filter-to" aria-label="To date">
+                  <button type="button" class="stats-btn-refresh" aria-label="Refresh">Refresh</button>
+                </div>
+                <p class="stats-loading" hidden>Loading…</p>
+                <div class="stats-chart-wrap"></div>
+                <div class="stats-breakdown-wrap"></div>
+                <div class="stats-export">
+                  <button type="button" class="stats-btn-export-csv">Export CSV</button>
+                  <button type="button" class="stats-btn-export-json">Export JSON</button>
+                </div>
+              </div>
+              <div class="settings-card stats-card col-full" id="stats-grafana" data-dashboard="grafana">
+                <h4>Grafana Push</h4>
+                <div class="stats-filters">
+                  <input type="text" class="stats-filter-q" placeholder="Search…" aria-label="Fulltext search">
+                  <input type="date" class="stats-filter-from" aria-label="From date">
+                  <input type="date" class="stats-filter-to" aria-label="To date">
+                  <button type="button" class="stats-btn-refresh" aria-label="Refresh">Refresh</button>
+                </div>
+                <p class="stats-loading" hidden>Loading…</p>
+                <div class="stats-chart-wrap"></div>
+                <div class="stats-breakdown-wrap"></div>
+                <div class="stats-export">
+                  <button type="button" class="stats-btn-export-csv">Export CSV</button>
+                  <button type="button" class="stats-btn-export-json">Export JSON</button>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="panel-reports" role="tabpanel" aria-labelledby="tab-reports" hidden>
+          <div class="panel-header">
+            <h2>Reports</h2>
+          </div>
+          <div class="panel-body">
+            <div class="settings-cards-wrap">
+              <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+              <div class="settings-cards cols-1">
+              <div class="settings-card">
+                <h4>Sales</h4>
+                <p class="text-muted">Revenue, orders, conversion. Coming soon.</p>
+              </div>
+              <div class="settings-card">
+                <h4>Visitors</h4>
+                <p class="text-muted">Unique visitors, sessions, bounce. Coming soon.</p>
+              </div>
+              <div class="settings-card">
+                <h4>Analytics</h4>
+                <p class="text-muted">Spend per customer, geography, times, days of week/months, world events. Coming soon.</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings panel: accordion + flex cards -->
+        <section class="tab-panel" id="panel-settings" role="tabpanel" aria-labelledby="tab-settings" hidden>
+          <div class="panel-header">
+            <h2>Settings</h2>
+          </div>
+          <div class="panel-body">
+            <div class="settings-accordion">
+              <details class="accordion-card" id="settings-appearance" open>
+                <summary class="accordion-header"><a href="#settings-appearance" onclick="event.stopPropagation()">Appearance</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card">
+                      <h4>Appearance</h4>
+                      <form class="admin-form" id="form-appearance">
+                        <label class="field">
+                          <span class="field-label">Color mode</span>
+                          <select name="color-mode">
+                            <option value="auto">Auto</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                          </select>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Active theme</span>
+                          <input type="text" name="active-theme" placeholder="(placeholder)" disabled>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Color scheme</span>
+                          <select name="theme.color_scheme">
+                            <option value="soft">Soft</option>
+                            <option value="warm">Warm</option>
+                            <option value="olive">Olive</option>
+                            <option value="cool">Cool</option>
+                            <option value="neutral">Neutral</option>
+                          </select>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Page background</span>
+                          <div class="background-upload">
+                            <input type="file" id="appearance-background" accept="image/*" aria-label="Upload background image">
+                            <div class="background-preview" id="appearance-background-preview"></div>
+                            <button type="button" class="btn-clear-bg" id="btn-clear-background">Clear</button>
+                          </div>
+                          <input type="hidden" name="theme.background" id="appearance-background-data">
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Menu position</span>
+                          <select name="menu-position">
+                            <option value="sidebar_left">Sidebar left</option>
+                            <option value="floating_top">Floating top</option>
+                            <option value="sidebar_right">Sidebar right</option>
+                            <option value="above_content">Above content</option>
+                          </select>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Language</span>
+                          <select name="language">
+                            <option value="EN">English</option>
+                            <option value="ES">Español</option>
+                            <option value="UA">Українська</option>
+                            <option value="DE">Deutsch</option>
+                            <option value="NL">Nederlands</option>
+                          </select>
+                        </label>
+                        <div class="form-actions">
+                          <button type="submit" class="btn-save">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-mail">
+                <summary class="accordion-header"><a href="#settings-mail" onclick="event.stopPropagation()">Mail</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card">
+                      <h4>Mail Transport</h4>
+                      <form class="admin-form mail-form" id="form-mail">
+                        <div class="form-grid">
+                          <label class="field">
+                            <span class="field-label">SMTP Host</span>
+                            <input type="text" name="smtp_host" placeholder="smtp.example.com">
+                          </label>
+                          <label class="field">
+                            <span class="field-label">Port</span>
+                            <input type="number" name="smtp_port" placeholder="587">
+                          </label>
+                          <label class="field">
+                            <span class="field-label">Username</span>
+                            <input type="text" name="smtp_user" placeholder="user@example.com">
+                          </label>
+                          <label class="field">
+                            <span class="field-label">Password</span>
+                            <input type="password" name="smtp_pass" placeholder="••••••••">
+                          </label>
+                          <label class="field">
+                            <span class="field-label">Encryption</span>
+                            <select name="smtp_encryption">
+                              <option value="tls">TLS</option>
+                              <option value="ssl">SSL</option>
+                              <option value="none">None</option>
+                            </select>
+                          </label>
+                          <label class="field">
+                            <span class="field-label">From Name</span>
+                            <input type="text" name="from_name" placeholder="shima.shop">
+                          </label>
+                          <label class="field full-width">
+                            <span class="field-label">From Email</span>
+                            <input type="email" name="from_email" placeholder="noreply@shima.shop">
+                          </label>
+                        </div>
+                        <div class="form-actions">
+                          <button type="submit" class="btn-save">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="settings-card">
+                      <h4>Email Category Alerts</h4>
+                      <p class="text-muted">Configure alerts for product categories. Coming soon.</p>
+                    </div>
+                    <div class="settings-card">
+                      <h4>Application Emails</h4>
+                      <p class="text-muted">User registered, Confirm email, 2FA, etc. Scheduled or event-triggered. Coming soon.</p>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-system">
+                <summary class="accordion-header"><a href="#settings-system" onclick="event.stopPropagation()">System</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card">
+                      <h4>Logging</h4>
+                      <form class="admin-form" id="form-logging">
+                        <label class="field">
+                          <span class="field-label">Targets</span>
+                          <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="log-driver-console" value="1"> Console</label>
+                            <label class="checkbox-label"><input type="checkbox" name="log-driver-db" value="1"> Database</label>
+                          </div>
+                          <span class="field-hint">Multiple targets work concurrently</span>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Level</span>
+                          <select name="log-level">
+                            <option value="debug">Debug</option>
+                            <option value="info">Info</option>
+                            <option value="warn">Warn</option>
+                            <option value="error">Error</option>
+                          </select>
+                        </label>
+                        <label class="field">
+                          <span class="field-label">Verbosity</span>
+                          <select name="log-verbosity">
+                            <option value="minimal">Minimal</option>
+                            <option value="normal">Normal</option>
+                            <option value="verbose">Verbose</option>
+                          </select>
+                        </label>
+                        <div class="form-actions">
+                          <button type="submit" class="btn-save">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="settings-card">
+                      <h4>Logs</h4>
+                      <div class="logs-filters-wrap">
+                        <div class="panel-header-actions logs-filters">
+                          <label class="logs-filter">
+                            <span class="field-label">Severity</span>
+                            <select id="logs-severity" aria-label="Filter by severity">
+                              <option value="">All</option>
+                              <option value="debug">Debug</option>
+                              <option value="info">Info</option>
+                              <option value="warn">Warn</option>
+                              <option value="error">Error</option>
+                            </select>
+                          </label>
+                          <label class="logs-filter">
+                            <span class="field-label">Type</span>
+                            <select id="logs-type" aria-label="Filter by type">
+                              <option value="">All</option>
+                              <option value="application">application</option>
+                              <option value="api">api</option>
+                              <option value="checkout">checkout</option>
+                              <option value="payments-sync">payments-sync</option>
+                              <option value="system">system</option>
+                              <option value="status">status</option>
+                            </select>
+                          </label>
+                          <label class="logs-filter">
+                            <span class="field-label">Search</span>
+                            <input type="text" id="logs-q" placeholder="Message..." aria-label="Search message">
+                          </label>
+                          <label class="logs-filter">
+                            <span class="field-label">From</span>
+                            <input type="datetime-local" id="logs-from" aria-label="From date">
+                          </label>
+                          <label class="logs-filter">
+                            <span class="field-label">To</span>
+                            <input type="datetime-local" id="logs-to" aria-label="To date">
+                          </label>
+                          <button type="button" class="btn-refresh" id="logs-refresh" aria-label="Refresh logs">Refresh</button>
+                        </div>
+                        <div class="logs-purge">
+                          <label class="logs-filter">
+                            <span class="field-label">Purge older than</span>
+                            <input type="number" id="logs-purge-days" placeholder="30" min="1" aria-label="Days to keep">
+                          </label>
+                          <button type="button" class="btn-purge" id="logs-purge" aria-label="Purge old logs">Purge</button>
+                        </div>
+                      </div>
+                      <div id="logs-panel-body" class="logs-table-wrap"></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-payment-methods">
+                <summary class="accordion-header"><a href="#settings-payment-methods" onclick="event.stopPropagation()">Payment Methods</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card col-full">
+                      <div id="payments-panel-body"></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-shipping">
+                <summary class="accordion-header"><a href="#settings-shipping" onclick="event.stopPropagation()">Shipping Methods</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card col-full">
+                      <div class="panel-header">
+                        <h3>Shipping Methods</h3>
+                        <button class="btn-add" data-section="shipping">+ Add Method</button>
+                      </div>
+                      <div id="list-shipping"></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-languages">
+                <summary class="accordion-header"><a href="#settings-languages" onclick="event.stopPropagation()">Languages</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card">
+                      <h4>Product Languages</h4>
+                      <p class="text-muted mb-3">Languages for the product modal (name, slug, comment, images per language).</p>
+                      <form class="admin-form" id="form-languages">
+                        <div class="languages-list" id="languages-list"></div>
+                        <div class="languages-add">
+                          <input type="text" name="lang-code" placeholder="Code (e.g. EN)" class="lang-input" maxlength="6" aria-label="Language code">
+                          <input type="text" name="lang-name" placeholder="Name (e.g. English)" class="lang-input flex-1" aria-label="Language name">
+                          <input type="text" name="lang-flag" placeholder="Flag (e.g. 🇬🇧)" class="lang-input w-16" aria-label="Flag emoji">
+                          <button type="button" class="btn-add-lang" id="btn-add-lang">Add</button>
+                        </div>
+                        <div class="form-actions mt-4">
+                          <button type="submit" class="btn-save">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="accordion-card" id="settings-currencies">
+                <summary class="accordion-header"><a href="#settings-currencies" onclick="event.stopPropagation()">Currencies</a></summary>
+                <div class="accordion-body">
+                  <div class="settings-cards-wrap">
+                    <button type="button" class="settings-cards-add" aria-label="Change layout (1–3 columns)" title="Columns"></button>
+                    <div class="settings-cards cols-1">
+                    <div class="settings-card col-full">
+                      <div class="panel-header">
+                        <h3>Currencies</h3>
+                        <button class="btn-add" data-section="currencies">+ Add Currency</button>
+                      </div>
+                      <div id="list-currencies"></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
       </div>
-    </div>
-  </nav>
-
-  <main id="main-content" class="admin-main">
-    <div class="container">
-
-      <section class="tab-panel active" id="panel-products" role="tabpanel" aria-labelledby="tab-products">
-        <div class="panel-header">
-          <h2>Products</h2>
-          <button class="btn-add" data-section="products">+ Add Product</button>
-        </div>
-        <div class="panel-body" id="list-products"></div>
-      </section>
-
-      <section class="tab-panel" id="panel-categories" role="tabpanel" aria-labelledby="tab-categories" hidden>
-        <div class="panel-header">
-          <h2>Categories</h2>
-          <button class="btn-add" data-section="categories">+ Add Category</button>
-        </div>
-        <div class="panel-body" id="list-categories"></div>
-      </section>
-
-      <section class="tab-panel" id="panel-kits" role="tabpanel" aria-labelledby="tab-kits" hidden>
-        <div class="panel-header">
-          <h2>Kits</h2>
-          <button class="btn-add" data-section="kits">+ Add Kit</button>
-        </div>
-        <div class="panel-body" id="list-kits"></div>
-      </section>
-
-      <section class="tab-panel" id="panel-subscriptions" role="tabpanel" aria-labelledby="tab-subscriptions" hidden>
-        <div class="panel-header">
-          <h2>Subscriptions</h2>
-          <button class="btn-add" data-section="subscriptions">+ Add Subscription</button>
-        </div>
-        <div class="panel-body" id="list-subscriptions"></div>
-      </section>
-
-      <section class="tab-panel" id="panel-shipping" role="tabpanel" aria-labelledby="tab-shipping" hidden>
-        <div class="panel-header">
-          <h2>Shipping Methods</h2>
-          <button class="btn-add" data-section="shipping">+ Add Method</button>
-        </div>
-        <div class="panel-body" id="list-shipping"></div>
-      </section>
-
-      <section class="tab-panel" id="panel-mail" role="tabpanel" aria-labelledby="tab-mail" hidden>
-        <div class="panel-header">
-          <h2>Mail Server</h2>
-        </div>
-        <form class="admin-form mail-form" id="form-mail">
-          <div class="form-grid">
-            <label class="field">
-              <span class="field-label">SMTP Host</span>
-              <input type="text" name="smtp_host" placeholder="smtp.example.com">
-            </label>
-            <label class="field">
-              <span class="field-label">Port</span>
-              <input type="number" name="smtp_port" placeholder="587">
-            </label>
-            <label class="field">
-              <span class="field-label">Username</span>
-              <input type="text" name="smtp_user" placeholder="user@example.com">
-            </label>
-            <label class="field">
-              <span class="field-label">Password</span>
-              <input type="password" name="smtp_pass" placeholder="••••••••">
-            </label>
-            <label class="field">
-              <span class="field-label">Encryption</span>
-              <select name="smtp_encryption">
-                <option value="tls">TLS</option>
-                <option value="ssl">SSL</option>
-                <option value="none">None</option>
-              </select>
-            </label>
-            <label class="field">
-              <span class="field-label">From Name</span>
-              <input type="text" name="from_name" placeholder="shima.shop">
-            </label>
-            <label class="field full-width">
-              <span class="field-label">From Email</span>
-              <input type="email" name="from_email" placeholder="noreply@shima.shop">
-            </label>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn-save">Save Settings</button>
-          </div>
-        </form>
-      </section>
-
-      <section class="tab-panel" id="panel-currencies" role="tabpanel" aria-labelledby="tab-currencies" hidden>
-        <div class="panel-header">
-          <h2>Currencies</h2>
-          <button class="btn-add" data-section="currencies">+ Add Currency</button>
-        </div>
-        <div class="panel-body" id="list-currencies"></div>
-      </section>
-
-    </div>
-  </main>
+    </main>
+  </div>
 
   <div class="modal-backdrop" id="modalBackdrop" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
