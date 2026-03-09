@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — shima.shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div>
+        <h1 class="logo"><a href="/" class="logo-link">shima<span class="logo-dot">.shop</span></a></h1>
+        <p class="tagline">Admin Panel</p>
+      </div>
+      <button class="btn-theme" id="btnTheme" aria-label="Switch colour theme, currently Auto">
+        <span class="btn-theme-icon" id="themeIcon" aria-hidden="true">◐</span>
+        <span id="themeLabel">Auto</span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="admin-tabs" aria-label="Admin sections">
+    <div class="container">
+      <div class="tabs-track" role="tablist" aria-label="Admin sections">
+        <button class="tab-pill active" role="tab" aria-selected="true" data-tab="products" id="tab-products" aria-controls="panel-products">Products</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="categories" id="tab-categories" aria-controls="panel-categories">Categories</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="kits" id="tab-kits" aria-controls="panel-kits">Kits</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="subscriptions" id="tab-subscriptions" aria-controls="panel-subscriptions">Subscriptions</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="shipping" id="tab-shipping" aria-controls="panel-shipping">Shipping Methods</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="mail" id="tab-mail" aria-controls="panel-mail">Mail Server</button>
+        <button class="tab-pill" role="tab" aria-selected="false" data-tab="currencies" id="tab-currencies" aria-controls="panel-currencies">Currencies</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="admin-main">
+    <div class="container">
+
+      <section class="tab-panel active" id="panel-products" role="tabpanel" aria-labelledby="tab-products">
+        <div class="panel-header">
+          <h2>Products</h2>
+          <button class="btn-add" data-section="products">+ Add Product</button>
+        </div>
+        <div class="panel-body" id="list-products"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-categories" role="tabpanel" aria-labelledby="tab-categories" hidden>
+        <div class="panel-header">
+          <h2>Categories</h2>
+          <button class="btn-add" data-section="categories">+ Add Category</button>
+        </div>
+        <div class="panel-body" id="list-categories"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-kits" role="tabpanel" aria-labelledby="tab-kits" hidden>
+        <div class="panel-header">
+          <h2>Kits</h2>
+          <button class="btn-add" data-section="kits">+ Add Kit</button>
+        </div>
+        <div class="panel-body" id="list-kits"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-subscriptions" role="tabpanel" aria-labelledby="tab-subscriptions" hidden>
+        <div class="panel-header">
+          <h2>Subscriptions</h2>
+          <button class="btn-add" data-section="subscriptions">+ Add Subscription</button>
+        </div>
+        <div class="panel-body" id="list-subscriptions"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-shipping" role="tabpanel" aria-labelledby="tab-shipping" hidden>
+        <div class="panel-header">
+          <h2>Shipping Methods</h2>
+          <button class="btn-add" data-section="shipping">+ Add Method</button>
+        </div>
+        <div class="panel-body" id="list-shipping"></div>
+      </section>
+
+      <section class="tab-panel" id="panel-mail" role="tabpanel" aria-labelledby="tab-mail" hidden>
+        <div class="panel-header">
+          <h2>Mail Server</h2>
+        </div>
+        <form class="admin-form mail-form" id="form-mail">
+          <div class="form-grid">
+            <label class="field">
+              <span class="field-label">SMTP Host</span>
+              <input type="text" name="smtp_host" placeholder="smtp.example.com">
+            </label>
+            <label class="field">
+              <span class="field-label">Port</span>
+              <input type="number" name="smtp_port" placeholder="587">
+            </label>
+            <label class="field">
+              <span class="field-label">Username</span>
+              <input type="text" name="smtp_user" placeholder="user@example.com">
+            </label>
+            <label class="field">
+              <span class="field-label">Password</span>
+              <input type="password" name="smtp_pass" placeholder="••••••••">
+            </label>
+            <label class="field">
+              <span class="field-label">Encryption</span>
+              <select name="smtp_encryption">
+                <option value="tls">TLS</option>
+                <option value="ssl">SSL</option>
+                <option value="none">None</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">From Name</span>
+              <input type="text" name="from_name" placeholder="shima.shop">
+            </label>
+            <label class="field full-width">
+              <span class="field-label">From Email</span>
+              <input type="email" name="from_email" placeholder="noreply@shima.shop">
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-save">Save Settings</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="tab-panel" id="panel-currencies" role="tabpanel" aria-labelledby="tab-currencies" hidden>
+        <div class="panel-header">
+          <h2>Currencies</h2>
+          <button class="btn-add" data-section="currencies">+ Add Currency</button>
+        </div>
+        <div class="panel-body" id="list-currencies"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" aria-label="Close" type="button">&times;</button>
+      </div>
+      <form id="modalForm" class="modal-body"></form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

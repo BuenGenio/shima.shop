@@ -6,73 +6,37 @@ const CHECKOUT_API = 'https://adhd-stack-checkout.adhd-stack.workers.dev';
 
 const KITS = [
   {
-    id: 'work',
-    name: 'Work Kit',
-    price: 249,
-    currency: '€',
-    accent: '#c28b0a',
-    accentLight: '#fdf6e3',
-    tagline: 'Focus · Clarity · Drive',
-    bundlePriceId: 'price_1T7Yc3A8xxsRaQqsXVY0l2Gl',
+    id: 'cookies',
+    name: 'Cookies',
+    price: 78800,
+    currency: '¥',
+    accent: '#8B5E3C',
+    accentLight: '#faf3ed',
+    tagline: 'Protein · Gluten-Free · Made in Japan',
+    bundlePriceId: null,
     items: [
-      { id: 'atomoxetine',     name: 'Atomoxetine',     dose: '40mg',   form: 'powder',  container: 'baggie', price: 39, selected: true, image: null, priceId: 'price_1T7YboA8xxsRaQqsbjKiW4Vo' },
-      { id: 'gunfacine',       name: 'Gunfacine',       dose: '1mg/ml', form: 'liquid',  container: 'vial',   price: 45, selected: true, image: null, priceId: 'price_1T7YboA8xxsRaQqs1ou5YxnU' },
-      { id: '9mbc',            name: '9-MBC',           dose: '10mg',   form: 'powder',  container: 'baggie', price: 32, selected: true, image: null, priceId: 'price_1T7YbpA8xxsRaQqsFYfCqFCZ' },
-      { id: 'phenylpiracetam', name: 'Phenylpiracetam', dose: '100mg',  form: 'powder',  container: 'baggie', price: 28, selected: true, image: null, priceId: 'price_1T7YbrA8xxsRaQqsWEuMwL8Q' },
-      { id: 'noopept',         name: 'Noopept',         dose: '30mg',   form: 'powder',  container: 'baggie', price: 22, selected: true, image: null, priceId: 'price_1T7YbsA8xxsRaQqsqLpYcagp' },
-      { id: 'ldopa',           name: 'L-Dopa',          dose: '200mg',  form: 'powder',  container: 'baggie', price: 18, selected: true, image: null, priceId: 'price_1T7YbtA8xxsRaQqsZ7ApxIlR' },
-      { id: '4f-modafinil',    name: '4F-Modafinil',    dose: '50mg',   form: 'powder',  container: 'baggie', price: 42, selected: true, image: null, priceId: 'price_1T7YbuA8xxsRaQqsZXccEFUN' },
-      { id: 'rape',            name: 'Rapé',            dose: '5g',     form: 'snuff',   container: 'jar',   price: 18, selected: true, image: null, priceId: 'price_1T7YbzA8xxsRaQqsZuXycVaq' },
-      {
-        id: 'speciosa-work',
-        name: 'Speciosa Replacement',
-        form: 'blend',
-        container: 'jar',
-        price: 29,
-        selected: true,
-        image: null,
-        priceId: 'price_1T7YbvA8xxsRaQqs2nqR0X2y',
-        components: [
-          { name: '7-OH',        dose: '5mg' },
-          { name: 'Theobromine', dose: '' },
-          { name: 'Baicalin',    dose: '20%' },
-          { name: 'Nuciferine',  dose: '20%' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'rest',
-    name: 'Rest Kit',
-    price: 149,
-    currency: '€',
-    accent: '#5b6eae',
-    accentLight: '#eef0f8',
-    tagline: 'Calm · Restore · Balance',
-    bundlePriceId: 'price_1T7Yc4A8xxsRaQqsCQZHkwwK',
-    items: [
-      { id: 'nuciferine',  name: 'Nuciferine',  dose: '20mg',  form: 'extract', container: 'jar',   price: 24, selected: true, image: null, priceId: 'price_1T7YbwA8xxsRaQqs8WsK5PWW' },
-      /* { id: '2mxl',        name: '2MXL',         dose: '10ml',  form: 'spray',   container: 'spray', price: 28, selected: true, image: null, priceId: 'price_1T7YbxA8xxsRaQqs9j92Hgtg' }, */
-      { id: 'kanna',       name: 'Kanna',        dose: '10ml',  form: 'spray',   container: 'spray', price: 22, selected: true, image: null, priceId: 'price_1T7YbyA8xxsRaQqseHxpEXkM' },
-      { id: 'nac',          name: 'NAC',           dose: '600mg', form: 'powder',  container: 'baggie', price: 14, selected: true, image: null, priceId: null },
-      { id: 'ashwagandha', name: 'Ashwagandha',  dose: '300mg', form: 'extract', container: 'jar',   price: 16, selected: true, image: null, priceId: 'price_1T7Yc0A8xxsRaQqstwogjcok' },
-      { id: '4f-phenibut', name: '4F-Phenibut',  dose: '250mg', form: 'powder',  container: 'baggie', price: 20, selected: true, image: null, priceId: 'price_1T7Yc1A8xxsRaQqs7fU3v8aH' },
-      {
-        id: 'speciosa-rest',
-        name: 'Speciosa Replacement',
-        form: 'blend',
-        container: 'jar',
-        price: 25,
-        selected: true,
-        image: null,
-        priceId: 'price_1T7Yc2A8xxsRaQqsV5jQHfT5',
-        components: [
-          { name: '7-OH',        dose: '5mg' },
-          { name: 'Theobromine', dose: '' },
-          { name: 'Baicalin',    dose: '20%' },
-          { name: 'Nuciferine',  dose: '20%' },
-        ],
-      },
+      { id: 'variety-6pack',         name: 'Protein Cookie Variety 6-Pack',  dose: '',              form: null, container: 'cookie', price: 2000,  selected: true, image: null, priceId: null },
+      { id: 'cinnamon-almond-12',    name: 'Cinnamon & Almond',             dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'double-choc-12',        name: 'Double Chocolate',              dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'chunk-choc-walnut-12',  name: 'Chunk Chocolate & Walnut',      dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'chocolate-set',         name: 'Protein Cookie Set — Chocolate', dose: '',             form: null, container: 'cookie', price: 3000,  selected: true, image: null, priceId: null },
+      { id: 'breakfast-granola-12',  name: 'Breakfast Granola',              dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'double-choc-6',         name: 'Double Chocolate',              dose: '6 Cookies',     form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'breakfast-granola-6',   name: 'Breakfast Granola',             dose: '6 Cookies',     form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'matcha-macadamia-6',    name: 'Matcha & Macadamia',            dose: '6 Cookies',     form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'mix-set-12',            name: 'Protein Cookies Mix Set',       dose: '12 Cookies',    form: null, container: 'cookie', price: 3000,  selected: true, image: null, priceId: null },
+      { id: 'bulk-mix-set',          name: 'Protein Cookies Bulk Mix Set',  dose: '8 Cookies',     form: null, container: 'cookie', price: 5700,  selected: true, image: null, priceId: null },
+      { id: 'double-choc-24',        name: 'Double Chocolate',              dose: '24 Cookies',    form: null, container: 'cookie', price: 6420,  selected: true, image: null, priceId: null },
+      { id: 'breakfast-granola-24',  name: 'Breakfast Granola',             dose: '24 Cookies',    form: null, container: 'cookie', price: 6420,  selected: true, image: null, priceId: null },
+      { id: 'matcha-macadamia-24',   name: 'Matcha & Macadamia',            dose: '24 Cookies',    form: null, container: 'cookie', price: 6420,  selected: true, image: null, priceId: null },
+      { id: 'cinnamon-almond-6',     name: 'Cinnamon & Almond',             dose: '6 Cookies',     form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'chunky-choc-walnut-6',  name: 'Chunky Choc & Walnut',          dose: '6 pieces',      form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'salted-caramel-choc',   name: 'Salted Caramel & Chocolate',    dose: '',              form: null, container: 'cookie', price: 1980,  selected: true, image: null, priceId: null },
+      { id: 'trial-set',             name: 'Protein Cookie Trial Set',      dose: '6 Cookies',     form: null, container: 'cookie', price: 2100,  selected: true, image: null, priceId: null },
+      { id: 'white-day-limited',     name: 'White Day Limited Edition',     dose: '6 Cookies',     form: null, container: 'cookie', price: 2100,  selected: true, image: null, priceId: null },
+      { id: 'salted-caramel-choc-12', name: 'Salted Caramel & Chocolate',   dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'matcha-macadamia-12',   name: 'Matcha & Macadamia',            dose: '12 Cookie Set', form: null, container: 'cookie', price: 3360,  selected: true, image: null, priceId: null },
+      { id: 'bulk-48',               name: '業務用クッキー',                   dose: '48枚',          form: null, container: 'cookie', price: 9600,  selected: true, image: null, priceId: null },
     ],
   },
 ];
@@ -142,10 +106,22 @@ function svgSpray() {
     <rect x="12" y="24" width="14" height="22" rx="3" stroke="currentColor" stroke-width="1.4"/>
     <rect x="15" y="17" width="8" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
     <rect x="13" y="11" width="12" height="8" rx="2.5" stroke="currentColor" stroke-width="1.4"/>
-    <path d="M25 14 L31 12 L31 14.5 L25 16.'rape':          { name: 'Rapé 5g',                      price: 18 },5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+    <path d="M25 14 L31 12 L31 14.5 L25 16.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
     <line x1="32" y1="11" x2="36" y2="10" stroke="currentColor" stroke-width=".9" opacity=".45"/>
     <line x1="32" y1="13.2" x2="37" y2="13.2" stroke="currentColor" stroke-width=".9" opacity=".45"/>
     <line x1="32" y1="15.5" x2="36" y2="16.5" stroke="currentColor" stroke-width=".9" opacity=".45"/>
+  </svg>`;
+}
+
+function svgCookie() {
+  return `<svg viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="24" r="14" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="14" cy="20" r="2" fill="currentColor" opacity=".5"/>
+    <circle cx="22" cy="18" r="1.5" fill="currentColor" opacity=".5"/>
+    <circle cx="18" cy="28" r="2" fill="currentColor" opacity=".5"/>
+    <circle cx="12" cy="27" r="1.2" fill="currentColor" opacity=".4"/>
+    <circle cx="24" cy="25" r="1.8" fill="currentColor" opacity=".5"/>
+    <circle cx="20" cy="22" r="1" fill="currentColor" opacity=".3"/>
   </svg>`;
 }
 
@@ -158,6 +134,7 @@ const CONTAINER_SVG = {
   jar:    svgJar,
   vial:   svgVial,
   spray:  svgSpray,
+  cookie: svgCookie,
 };
 
 /* ── State ────────────────────────────────────────────────── */

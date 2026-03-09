@@ -1,31 +1,32 @@
 import Stripe from 'stripe';
 
 const PRODUCTS = {
-  work: {
-    name: 'Work Kit',
-    fullPrice: 249,
+  cookies: {
+    name: 'Cookies',
+    fullPrice: 78800,
     items: {
-      'atomoxetine':     { name: 'Atomoxetine 40mg',          price: 39 },
-      'gunfacine':       { name: 'Gunfacine 1mg/ml',          price: 45 },
-      '9mbc':            { name: '9-MBC 10mg',                price: 32 },
-      'phenylpiracetam': { name: 'Phenylpiracetam 100mg',     price: 28 },
-      'noopept':         { name: 'Noopept 30mg',              price: 22 },
-      'ldopa':           { name: 'L-Dopa 200mg',              price: 18 },
-      '4f-modafinil':    { name: '4F-Modafinil 50mg',         price: 42 },
-      'speciosa-work':   { name: 'Speciosa Replacement Blend', price: 29 },
-    },
-  },
-  rest: {
-    name: 'Rest Kit',
-    fullPrice: 149,
-    items: {
-      'nuciferine':    { name: 'Nuciferine 20mg',             price: 24 },
-      '2mxl':          { name: '2MXL 10ml spray',             price: 28 },
-      'kanna':         { name: 'Kanna 10ml spray',            price: 22 },
-      'rape':          { name: 'Rapé 5g',                     price: 18 },
-      'ashwagandha':   { name: 'Ashwagandha 300mg',           price: 16 },
-      '4f-phenibut':   { name: '4F-Phenibut 250mg',           price: 20 },
-      'speciosa-rest': { name: 'Speciosa Replacement Blend',  price: 25 },
+      'variety-6pack':         { name: 'Protein Cookie Variety 6-Pack',          price: 2000 },
+      'cinnamon-almond-12':    { name: 'Cinnamon & Almond 12 Cookie Set',       price: 3360 },
+      'double-choc-12':        { name: 'Double Chocolate 12 Cookie Set',        price: 3360 },
+      'chunk-choc-walnut-12':  { name: 'Chunk Chocolate & Walnut 12 Cookie Set', price: 3360 },
+      'chocolate-set':         { name: 'Protein Cookie Set — Chocolate',        price: 3000 },
+      'breakfast-granola-12':  { name: 'Breakfast Granola 12 Cookie Set',       price: 3360 },
+      'double-choc-6':         { name: 'Double Chocolate 6 Cookies',            price: 1980 },
+      'breakfast-granola-6':   { name: 'Breakfast Granola 6 Cookies',           price: 1980 },
+      'matcha-macadamia-6':    { name: 'Matcha & Macadamia 6 Cookies',          price: 1980 },
+      'mix-set-12':            { name: 'Protein Cookies Mix Set 12 Cookies',    price: 3000 },
+      'bulk-mix-set':          { name: 'Protein Cookies Bulk Mix Set 8 Cookies', price: 5700 },
+      'double-choc-24':        { name: 'Double Chocolate 24 Cookies',           price: 6420 },
+      'breakfast-granola-24':  { name: 'Breakfast Granola 24 Cookies',          price: 6420 },
+      'matcha-macadamia-24':   { name: 'Matcha & Macadamia 24 Cookies',         price: 6420 },
+      'cinnamon-almond-6':     { name: 'Cinnamon & Almond 6 Cookies',          price: 1980 },
+      'chunky-choc-walnut-6':  { name: 'Chunky Choc & Walnut 6 pieces',        price: 1980 },
+      'salted-caramel-choc':   { name: 'Salted Caramel & Chocolate',            price: 1980 },
+      'trial-set':             { name: 'Protein Cookie Trial Set 6 Cookies',    price: 2100 },
+      'white-day-limited':     { name: 'White Day Limited Edition 6 Cookies',   price: 2100 },
+      'salted-caramel-choc-12': { name: 'Salted Caramel & Chocolate 12 Cookie Set', price: 3360 },
+      'matcha-macadamia-12':   { name: 'Matcha & Macadamia 12 Cookie Set',      price: 3360 },
+      'bulk-48':               { name: '業務用クッキー 48枚',                      price: 9600 },
     },
   },
 };
@@ -64,18 +65,18 @@ export async function onRequestPost(context) {
     if (allSelected) {
       lineItems = [{
         price_data: {
-          currency: 'eur',
+          currency: 'jpy',
           product_data: { name: `${kit.name} (Complete)` },
-          unit_amount: kit.fullPrice * 100,
+          unit_amount: kit.fullPrice,
         },
         quantity: 1,
       }];
     } else {
       lineItems = validItems.map(id => ({
         price_data: {
-          currency: 'eur',
+          currency: 'jpy',
           product_data: { name: kit.items[id].name },
-          unit_amount: kit.items[id].price * 100,
+          unit_amount: kit.items[id].price,
         },
         quantity: 1,
       }));
