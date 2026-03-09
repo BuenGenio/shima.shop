@@ -4,3 +4,4 @@ node_modules/
 .wrangler/
 stripe-price-ids.json
 scripts/
+public/

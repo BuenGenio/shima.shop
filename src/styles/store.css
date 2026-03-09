@@ -1,219 +1,3 @@
-/* ── Reset & Variables ─────────────────────────────────────── */
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #f6f4f0;
-  --surface: #ffffff;
-  --text: #1a1a1a;
-  --text-muted: #6b6b6b;
-  --border: #e4e0d8;
-  --radius: 16px;
-  --radius-sm: 10px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
-  --shadow-md: 0 4px 20px rgba(0,0,0,.08);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
-  --transition: .35s cubic-bezier(.4,0,.2,1);
-  --font: 'Inter', system-ui, -apple-system, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-  color-scheme: light;
-}
-
-/* Dark theme — applied when user picks "dark" or OS prefers dark in auto mode */
-:root[data-theme="dark"],
-:root[data-theme="auto"][data-system="dark"] {
-  --bg: #0c0e14;
-  --surface: #181b24;
-  --text: rgba(255,255,255,.92);
-  --text-muted: rgba(255,255,255,.55);
-  --border: rgba(255,255,255,.10);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-  --shadow-md: 0 4px 20px rgba(0,0,0,.4);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.55);
-  color-scheme: dark;
-}
-
-html { font-size: 16px; }
-
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── Skip Link (ADA 2.4.1) ────────────────────────────────── */
-
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  z-index: 9999;
-  padding: 12px 24px;
-  background: var(--text);
-  color: var(--bg);
-  font-size: .9rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-}
-
-.skip-link:focus {
-  position: fixed;
-  left: 16px;
-  top: 0;
-  width: auto;
-  height: auto;
-  overflow: visible;
-}
-
-/* ── Focus Visible (ADA 2.4.7) ───────────────────────────── */
-
-:focus-visible {
-  outline: 3px solid var(--kit-accent, #c28b0a);
-  outline-offset: 2px;
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* ── Layout ───────────────────────────────────────────────── */
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ── Cause Banner ─────────────────────────────────────────── */
-
-.cause-banner {
-  background: linear-gradient(135deg, #0057b8 0%, #0057b8 50%, #ffd700 50%, #ffd700 100%);
-  padding: 12px 0;
-  position: relative;
-}
-
-.cause-banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.55);
-}
-
-.cause-banner-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.cause-emblem {
-  width: 32px;
-  height: 38px;
-  flex-shrink: 0;
-}
-
-.cause-text {
-  font-size: .82rem;
-  color: rgba(255,255,255,.92);
-  line-height: 1.4;
-}
-
-.cause-text strong {
-  color: #ffd700;
-}
-
-.cause-counter {
-  font-family: var(--mono);
-  font-size: .75rem;
-  font-weight: 600;
-  color: #ffd700;
-  background: rgba(255,255,255,.12);
-  padding: 3px 10px;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-/* ── Header ───────────────────────────────────────────────── */
-
-.site-header {
-  padding: 48px 0 24px;
-  text-align: center;
-}
-
-.header-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.btn-theme {
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  color: var(--text-muted);
-  font-family: var(--font);
-  font-size: .78rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .2s ease;
-}
-
-.btn-theme:hover {
-  border-color: var(--text-muted);
-  color: var(--text);
-}
-
-.btn-theme-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -.04em;
-  color: var(--text);
-}
-
-.logo-dot {
-  color: #c28b0a;
-}
-
-.tagline {
-  margin-top: 6px;
-  font-size: .95rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  letter-spacing: .02em;
-}
-
 /* ── Kits Grid ────────────────────────────────────────────── */
 
 .kits-grid {
@@ -641,47 +425,36 @@ body {
   color: var(--kit-accent);
 }
 
-/* ── Footer ───────────────────────────────────────────────── */
+/* ── Checkout Button ──────────────────────────────────────── */
 
-.site-footer {
-  margin-top: auto;
-  padding: 28px 0 20px;
-  text-align: center;
-  font-size: .78rem;
-  color: var(--text-muted);
-}
-
-.cause-footer {
-  display: flex;
+.btn-checkout {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  padding: 14px 20px;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
+  gap: 6px;
+  padding: 9px 22px;
+  border: none;
+  border-radius: 8px;
+  background: var(--kit-accent);
+  color: #fff;
+  font-family: var(--font);
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
 }
 
-.cause-footer p {
-  font-size: .8rem;
-  line-height: 1.5;
-  color: var(--text-muted);
+.btn-checkout:hover { opacity: .88; transform: translateY(-1px); }
+.btn-checkout:active { transform: translateY(0); }
+
+.btn-checkout:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.cause-footer strong {
-  color: #dab44d;
-}
-
-.cause-emblem-sm {
-  width: 24px;
-  height: 30px;
-  flex-shrink: 0;
-}
-
-.footer-legal {
-  margin-top: 4px;
-  color: var(--text-muted);
+.btn-checkout svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ── Success Page ─────────────────────────────────────────── */
@@ -724,38 +497,6 @@ body {
 }
 
 .success-back:hover { opacity: .85; }
-
-/* ── Checkout Button ──────────────────────────────────────── */
-
-.btn-checkout {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 22px;
-  border: none;
-  border-radius: 8px;
-  background: var(--kit-accent);
-  color: #fff;
-  font-family: var(--font);
-  font-size: .85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity .2s, transform .15s;
-}
-
-.btn-checkout:hover { opacity: .88; transform: translateY(-1px); }
-.btn-checkout:active { transform: translateY(0); }
-
-.btn-checkout:disabled {
-  opacity: .5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.btn-checkout svg {
-  width: 16px;
-  height: 16px;
-}
 
 /* ── Terms Page ───────────────────────────────────────────── */
 
@@ -830,38 +571,9 @@ body {
   color: var(--text);
 }
 
-.logo-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ── Footer Link ──────────────────────────────────────────── */
-
-.footer-legal a {
-  color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid var(--border);
-  transition: color .2s, border-color .2s;
-}
-
-.footer-legal a:hover {
-  color: var(--text);
-  border-color: var(--text);
-}
-
-/* ── Responsive ───────────────────────────────────────────── */
+/* ── Responsive (store-specific) ─────────────────────────── */
 
 @media (max-width: 720px) {
-  .cause-banner-inner { gap: 8px; text-align: center; }
-  .cause-text { font-size: .75rem; }
-  .cause-counter { font-size: .7rem; }
-  .cause-footer { flex-direction: column; gap: 6px; padding: 10px 14px; }
-
-  .site-header { padding: 32px 0 16px; }
-  .logo { font-size: 1.6rem; }
-  .btn-theme { right: 16px; padding: 6px 10px; font-size: .72rem; }
-  .btn-theme #themeLabel { display: none; }
-
   .kit-bag { padding: 28px 16px 24px; }
   .kit-bag-svg { width: 120px; height: 166px; }
   .expanded .kit-bag-svg { width: 56px; height: 78px; }
@@ -874,17 +586,5 @@ body {
 }
 
 @media (max-width: 480px) {
-  .container { padding: 0 16px; }
   .expanded .kit-bag { flex-direction: column; align-items: flex-start; }
-}
-
-/* ── Reduced Motion (WCAG 2.3.3) ─────────────────────────── */
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }

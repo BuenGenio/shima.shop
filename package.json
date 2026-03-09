@@ -1,10 +1,13 @@
 {
-  "name": "adhd-stack.shop",
+  "name": "shima.shop",
   "version": "1.0.0",
-  "main": "app.js",
+  "private": true,
   "scripts": {
-    "dev": "wrangler pages dev public",
-    "deploy": "wrangler pages deploy public"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:full": "vite build && wrangler pages dev public",
+    "deploy": "vite build && wrangler pages deploy public"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +16,8 @@
   "dependencies": {
     "stripe": "^20.4.0",
     "wrangler": "^4.70.0"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
   }
 }

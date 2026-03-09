@@ -1,0 +1,213 @@
+/* ── Layout ───────────────────────────────────────────────── */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Cause Banner ─────────────────────────────────────────── */
+
+.cause-banner {
+  background: linear-gradient(135deg, #0057b8 0%, #0057b8 50%, #ffd700 50%, #ffd700 100%);
+  padding: 12px 0;
+  position: relative;
+}
+
+.cause-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+}
+
+.cause-banner-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cause-emblem {
+  width: 32px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.cause-text {
+  font-size: .82rem;
+  color: rgba(255,255,255,.92);
+  line-height: 1.4;
+}
+
+.cause-text strong {
+  color: #ffd700;
+}
+
+.cause-counter {
+  font-family: var(--mono);
+  font-size: .75rem;
+  font-weight: 600;
+  color: #ffd700;
+  background: rgba(255,255,255,.12);
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+
+.site-header {
+  padding: 48px 0 24px;
+  text-align: center;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.btn-theme {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: .78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn-theme:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+.btn-theme-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  color: var(--text);
+}
+
+.logo-dot {
+  color: #c28b0a;
+}
+
+.tagline {
+  margin-top: 6px;
+  font-size: .95rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: .02em;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+
+.site-footer {
+  margin-top: auto;
+  padding: 28px 0 20px;
+  text-align: center;
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
+.cause-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.cause-footer p {
+  font-size: .8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.cause-footer strong {
+  color: #dab44d;
+}
+
+.cause-emblem-sm {
+  width: 24px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.footer-legal {
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Footer Link ──────────────────────────────────────────── */
+
+.footer-legal a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color .2s, border-color .2s;
+}
+
+.footer-legal a:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 720px) {
+  .cause-banner-inner { gap: 8px; text-align: center; }
+  .cause-text { font-size: .75rem; }
+  .cause-counter { font-size: .7rem; }
+  .cause-footer { flex-direction: column; gap: 6px; padding: 10px 14px; }
+
+  .site-header { padding: 32px 0 16px; }
+  .logo { font-size: 1.6rem; }
+  .btn-theme { right: 16px; padding: 6px 10px; font-size: .72rem; }
+  .btn-theme #themeLabel { display: none; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+}
+
+/* ── Reduced Motion (WCAG 2.3.3) ─────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
