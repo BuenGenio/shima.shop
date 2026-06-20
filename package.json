@@ -21,7 +21,7 @@
   "dependencies": {
     "@libsql/client": "^0.17.0",
     "stripe": "^20.4.0",
-    "wrangler": "^4.70.0"
+    "wrangler": "^4.103.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",
